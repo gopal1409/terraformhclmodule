@@ -72,9 +72,14 @@ resource "azurerm_subnet_network_security_group_association" "web_server_sag"{
 network_security_group_id = azurerm_network_security_group.web_server_nsg.id
 subnet_id = azurerm_subnet.web_server_subnet["web-server"].id 
 }
-
+resource "random_string" "random" {
+    length = 10
+    upper = false
+    special = false
+    number = false 
+}
 resource "azurerm_storage_account" "storage_account" {
-    name = "gopalstorageaccount"
+    name = "bootdiag${random_string.random.result}"
     location = var.web_server_location
     resource_group_name = azurerm_resource_group.web_server_rg.name
     account_tier = "Standard"
@@ -109,7 +114,7 @@ resource "azurerm_virtual_machine_scale_set" "web_server" {
   os_profile {
       computer_name_prefix = local.web_server_name
       admin_username = "webserver"
-      admin_password = "Admin@123456"
+      admin_password = var.admin_password
   }
 
   os_profile_windows_config {

@@ -1,6 +1,10 @@
 provider "azurerm" {
     features {}
 }
+
+provider "random" {
+    
+}
 module "location_us2w" {
     source = "./location"
     web_server_location="westus2"
@@ -14,7 +18,7 @@ module "location_us2w" {
         web-server = "1.0.1.0/24"
     }
     terraform_script_version = var.terraform_script_version
-    admin_password = "Admin@123456"
+    admin_password = data.azurerm_key_vault_secret.admin_password.value
 
 }
 
@@ -31,5 +35,5 @@ module "location_us2e" {
         web-server = "2.0.1.0/24"
     }
     terraform_script_version = var.terraform_script_version
-    admin_password = "Admin@123456"
+    admin_password = data.azurerm_key_vault_secret.admin_password.value
 }
