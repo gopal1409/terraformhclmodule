@@ -1,16 +1,7 @@
-variable "web_server_location" {
-    type = string
-}
 variable "web_server_rg" {
     type = string
 }
 variable "resource_prefix" {
-    type = string
-}
-variable "web_server_address_space" {
-    type = string
-}
-variable "web_server_address_prefix" {
     type = string
 }
 variable "web_server_name" {
@@ -23,9 +14,6 @@ variable "environment" {
 
 variable "web_server_count" {
     type = number
-}
-variable "web_server_subnets" {
-    type = map
 }
 variable "terraform_script_version" {
     type = string
