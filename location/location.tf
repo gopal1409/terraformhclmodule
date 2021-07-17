@@ -128,11 +128,14 @@ resource "azurerm_virtual_machine_scale_set" "web_server" {
       name = local.web_server_name
       primary = true 
       subnet_id = azurerm_subnet.web_server_subnet["web-server"].id
+      load_balancer_backend_address_pool_ids = [azurerm_lb_backend_address_pool.web_server_lb_backend_pool.id]
     }
   }
   boot_diagnostics {
       enabled = true
       storage_uri = azurerm_storage_account.storage_account.primary_blob_endpoint
+  
+  
   }
 }
 
