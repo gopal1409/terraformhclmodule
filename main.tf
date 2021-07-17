@@ -13,6 +13,8 @@ module "location_us2w" {
     web_server_subnets = {
         web-server = "1.0.1.0/24"
     }
+    terraform_script_version = var.terraform_script_version
+    admin_password = "Admin@123456"
 
 }
 
