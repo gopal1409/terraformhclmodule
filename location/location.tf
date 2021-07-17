@@ -72,6 +72,13 @@ resource "azurerm_subnet_network_security_group_association" "web_server_sag"{
 network_security_group_id = azurerm_network_security_group.web_server_nsg.id
 subnet_id = azurerm_subnet.web_server_subnet["web-server"].id 
 }
+resource "azurerm_storage_account" "new_storage" {
+    name = "bootdiagnosticsgopal"
+    location = var.web_server_location
+    resource_group_name = azurerm_resource_group.web_server_rg.name
+    access_tier = "Standard"
+    access_replication_type = "LRS"
+}
 resource "random_string" "random" {
     length = 10
     upper = false

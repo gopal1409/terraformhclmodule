@@ -7,7 +7,7 @@ provider "random" {
 }
 module "location_us2w" {
     source = "./location"
-    web_server_location="westus2"
+    web_server_location="Australia Southeast"
     web_server_rg = "${var.web_server_rg}-us2w" 
     resource_prefix = "${var.resource_prefix}-us2w" 
     web_server_address_space = "1.0.0.0/22"
@@ -25,7 +25,7 @@ module "location_us2w" {
 module "location_us2e" {
     source = "./location"
     
-    web_server_location = "eastus2"
+    web_server_location = "Australia Central"
     web_server_rg = "${var.web_server_rg}-us2e"
     resource_prefix = "${var.resource_prefix}-us2e"
     web_server_address_space = "2.0.0.0/22"
